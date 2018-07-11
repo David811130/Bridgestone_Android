@@ -91,4 +91,12 @@
         android:layout_marginBottom="26dp"
         android:text="@string/textview" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/date"
+        android:layout_alignEnd="@+id/imageView3"
+        android:text="@string/btn_verify_text" />
+
 </RelativeLayout>
