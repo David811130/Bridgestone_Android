@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Bridgestone</string>
+    <string name="btn_verify_text">Verify</string>
+    <string name="btn_exit_text">Exit</string>
+    <string name="btn_scan_text">Scan</string>
+    <string name="pressure_text">Press:</string>
+    <string name="tyre_text">Tyre:</string>
+    <string name="battery_text">Replace Battery</string>
+    <string name="blogo">Bridgestone</string>
+    <string name="press">Press</string>
+    <string name="tyre">Tyre</string>
+    <string name="textview">TextView</string>
+
+</resources>
