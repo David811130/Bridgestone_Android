@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,8 +34,30 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
-            battery_text.setText(String.valueOf(level) + "%");
-        }
+            battery_text.setText(String.valueOf(level));
+
+            final int[] batteryArray = {
+                    R.drawable.slide1,
+                    R.drawable.slide2,
+                    R.drawable.slide3,
+                    R.drawable.slide4,
+                    R.drawable.slide5
+            };
+            ImageView batteryLevel = findViewById(R.id.imageView2);
+            if (level > 75)
+                batteryLevel.setImageResource(batteryArray[0]);
+            else if (level > 50)
+                batteryLevel.setImageResource(batteryArray[1]);
+            else if (level > 25)
+                batteryLevel.setImageResource(batteryArray[2]);
+            else if (level > 15)
+                batteryLevel.setImageResource(batteryArray[3]);
+            else if (level > 5)
+                batteryLevel.setImageResource(batteryArray[4]);
+            }
+
+
+
     };
 
 
@@ -42,29 +65,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        EditText editTextPress = findViewById(R.id.editText);
+        EditText editTextTyre = findViewById(R.id.editText3);
+        editTextPress.requestFocus();
+        if (editTextPress.getText().length() > 7) {
+            editTextPress.clearFocus();
+            editTextTyre.requestFocus();
+        }
 
 
 
 
 
-
-
-        final int[] batteryArray = {
-                R.drawable.slide1,
-                R.drawable.slide2,
-                R.drawable.slide3,
-                R.drawable.slide4,
-                R.drawable.slide5
-        };
 
         battery_text = findViewById(R.id.textView3);
         this.registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
 
-        if (battery_text = 100%){
-            ImageView batteryLevel = findViewById(R.id.imageView2);
-            batteryLevel.setImageResource(batteryArray[0]);
-        }
+
 
 
         Thread t = new Thread() {
