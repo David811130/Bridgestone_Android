@@ -16,7 +16,7 @@
         android:id="@+id/editText3"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText"
+        android:layout_alignEnd="@+id/imageView3"
         android:layout_centerVertical="true"
         android:ems="10"
         android:hint="@string/tyre"
@@ -43,7 +43,7 @@
         android:id="@+id/editText"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textView3"
+        android:layout_alignEnd="@+id/imageView3"
         android:layout_alignTop="@+id/textView"
         android:ems="10"
         android:hint="@string/press"
@@ -72,24 +72,14 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="159dp"
-        android:text="@string/battery_text"
-        android:textSize="36sp" />
-
-    <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
-        android:text="@string/textview" />
+        android:text="@string/timedate"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button"
@@ -98,5 +88,23 @@
         android:layout_alignBottom="@+id/date"
         android:layout_alignEnd="@+id/imageView3"
         android:text="@string/btn_verify_text" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="110dp"
+        android:layout_height="93dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="105dp"
+        app:srcCompat="@drawable/slide1" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="@string/batper" />
 
 </RelativeLayout>
