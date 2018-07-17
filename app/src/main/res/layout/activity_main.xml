@@ -48,7 +48,7 @@
         android:ems="10"
         android:hint="@string/press"
         android:inputType="textFilter"
-        android:maxLength="6" />
+        android:maxLength="5" />
 
     <TextView
         android:id="@+id/textView"
@@ -82,12 +82,14 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/verify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/date"
         android:layout_alignEnd="@+id/imageView3"
-        android:text="@string/btn_verify_text" />
+        android:background="@color/colorAccent"
+        android:text="@string/btn_verify_text"
+        android:textColor="@android:color/background_light" />
 
     <ImageView
         android:id="@+id/imageView2"
