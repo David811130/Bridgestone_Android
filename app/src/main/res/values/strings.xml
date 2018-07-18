@@ -11,5 +11,7 @@
     <string name="tyre">Tyre</string>
     <string name="timedate">TextView</string>
     <string name="batper">batper</string>
+    <string name="port">Port Number</string>
+    <string name="address">IP Add</string>
 
 </resources>

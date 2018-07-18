@@ -35,18 +35,19 @@ import android.os.Build;
 
 public class MainActivity extends AppCompatActivity {
 
-    public String udpOutputData;
 
 
 
     //Battery Level Image display
     private TextView battery_text;
+
     private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
         @Override
 
         public void onReceive(Context context, Intent intent) {
             int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
             battery_text.setText(String.valueOf(level));
+            battery_text.setVisibility(View.INVISIBLE);
 
             final int[] batteryArray = {
                     R.drawable.slide1,
@@ -73,11 +74,66 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final EditText editTextPress = findViewById(R.id.editTextPress);
+        final EditText editTextTyre = findViewById(R.id.editTyre);
+
+        editTextPress.requestFocus();
+
+
+        Button verify = (Button) findViewById(R.id.verify);
+        verify.setOnClickListener(new View.OnClickListener() {
+            //onClick method for Verify button
+            public void onClick(View arg0) {
+
+                Thread thread = new Thread(){
+                    public void run(){
+                        String pressText;
+                        String tyreText;
+                        pressText = editTextPress.getText().toString();
+                        tyreText = editTextTyre.getText().toString();
+
+                        String msg = (pressText + "," + tyreText);
+
+                        int port = 1521;
+                        try {
+                            DatagramSocket s = new DatagramSocket();
+                            InetAddress local = InetAddress.getByName("10.3.22.206");
+                            int msg_length = msg.length();
+                            byte[] message = msg.getBytes();
+                            DatagramPacket p = new DatagramPacket(message, msg_length, local, port);
+                            s.send(p);
+                        }catch (SocketException e) {
+                            e.printStackTrace();
+                        }catch (UnknownHostException e) {
+                            e.printStackTrace();
+                        }catch(IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+
+                };
+                thread.start();
+
+                editTextPress.requestFocus();
+                if (editTextPress.hasFocus() == true){
+                    editTextPress.setText("");
+                    editTextTyre.setText("");
+                }
+
+
+
+
+            }
+
+
+        });
 
 
 
@@ -110,6 +166,8 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         t.start();
+
+
 
 
     }
