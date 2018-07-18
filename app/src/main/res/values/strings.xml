@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bridgestone</string>
+    <string name="app_name">Curing Mobile</string>
     <string name="btn_verify_text">Verify</string>
     <string name="btn_exit_text">Exit</string>
     <string name="btn_scan_text">Scan</string>

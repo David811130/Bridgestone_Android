@@ -122,10 +122,10 @@ if (editTextPress.getText().toString().length()==5){
 
 
 
-                        int port = 1521;
+                        int port = 65001;
                         try {
                             DatagramSocket s = new DatagramSocket();
-                            InetAddress local = InetAddress.getByName("10.3.22.206");
+                            InetAddress local = InetAddress.getByName("172.168.45.2");
                             int msg_length = msg.length();
                             byte[] message = msg.getBytes();
                             DatagramPacket p = new DatagramPacket(message, msg_length, local, port);
@@ -176,7 +176,7 @@ if (editTextPress.getText().toString().length()==5){
                             public void run() {
                                 TextView tdate = (TextView) findViewById(R.id.date);
                                 long date = System.currentTimeMillis();
-                                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy\nhh:mm:ss a");
+                                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy\nHH:mm:ss ");
                                 String dateString = sdf.format(date);
                                 tdate.setText(dateString);
 
