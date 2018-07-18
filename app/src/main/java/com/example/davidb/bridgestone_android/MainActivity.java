@@ -8,6 +8,8 @@ import android.os.BatteryManager;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 batteryLevel.setImageResource(batteryArray[3]);
             else if (level > 5)
                 batteryLevel.setImageResource(batteryArray[4]);
-            else if (level < 5)
+            else if (level <= 5)
                 batteryLevel.setImageResource(batteryArray[4]);
         }
 
@@ -84,6 +86,25 @@ public class MainActivity extends AppCompatActivity {
 
         editTextPress.requestFocus();
 
+        editTextPress.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+if (editTextPress.getText().toString().length()==5){
+    editTextTyre.requestFocus();
+}
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
         Button verify = (Button) findViewById(R.id.verify);
         verify.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                         tyreText = editTextTyre.getText().toString();
 
                         String msg = (pressText + "," + tyreText);
+
+
 
                         int port = 1521;
                         try {
